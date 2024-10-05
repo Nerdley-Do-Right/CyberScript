@@ -33,7 +33,8 @@ Start-MpScan -ScanType FullScan
 # Update Windows
 Install-WindowsUpdate -AcceptAll -IgnoreReboot
 
-# Check and update Group Policies
+#TODO: Check and update Group Policies
+
 # Ensure all users have a password
 Get-LocalUser | Where-Object { $_.PasswordRequired -eq $false -and $_.Name -ne $currentLoggedInUser } | ForEach-Object {
     Set-LocalUser -Name $_.Name -PasswordNeverExpires $false -Password (Read-Host -AsSecureString "Enter new password for $($_.Name)")
